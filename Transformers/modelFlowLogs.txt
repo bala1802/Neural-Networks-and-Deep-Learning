@@ -64,6 +64,10 @@ The Target Mask Shape is :  torch.Size([1, 1, 7, 7])
 ******************* Step-5.1 : The Attention Shape is **********************  torch.Size([1, 8, 9, 9])
 ******************* Step-5.1 : The Out Shape is **********************  torch.Size([1, 9, 256])
 ******************* Step-5.1 : The Out Shape AfterFC is **********************  torch.Size([1, 9, 256])
+******************* Step-4.1 : The Attention results are captured ********************** 
+******************* Step-4.1 : After Applying Residual and normalization (on Multi Head Attention) **********************  torch.Size([1, 9, 256])
+******************* Step-4.1 : After Applying Feed Forward Neural Network **********************  torch.Size([1, 9, 256])
+******************* Step-4.1 : After Applying Residual and normalization (on Feed Forward) **********************  torch.Size([1, 9, 256])
 
 ******************* Step-3.1 : Processing Layer Number **********************  2
 ******************* Step-4.1 : The value shape is **********************  torch.Size([1, 9, 256])
@@ -79,6 +83,10 @@ The Target Mask Shape is :  torch.Size([1, 1, 7, 7])
 ******************* Step-5.1 : The Attention Shape is **********************  torch.Size([1, 8, 9, 9])
 ******************* Step-5.1 : The Out Shape is **********************  torch.Size([1, 9, 256])
 ******************* Step-5.1 : The Out Shape AfterFC is **********************  torch.Size([1, 9, 256])
+******************* Step-4.1 : The Attention results are captured ********************** 
+******************* Step-4.1 : After Applying Residual and normalization (on Multi Head Attention) **********************  torch.Size([1, 9, 256])
+******************* Step-4.1 : After Applying Feed Forward Neural Network **********************  torch.Size([1, 9, 256])
+******************* Step-4.1 : After Applying Residual and normalization (on Feed Forward) **********************  torch.Size([1, 9, 256])
 
 ******************* Step-3.1 : Processing Layer Number **********************  3
 ******************* Step-4.1 : The value shape is **********************  torch.Size([1, 9, 256])
@@ -94,6 +102,10 @@ The Target Mask Shape is :  torch.Size([1, 1, 7, 7])
 ******************* Step-5.1 : The Attention Shape is **********************  torch.Size([1, 8, 9, 9])
 ******************* Step-5.1 : The Out Shape is **********************  torch.Size([1, 9, 256])
 ******************* Step-5.1 : The Out Shape AfterFC is **********************  torch.Size([1, 9, 256])
+******************* Step-4.1 : The Attention results are captured ********************** 
+******************* Step-4.1 : After Applying Residual and normalization (on Multi Head Attention) **********************  torch.Size([1, 9, 256])
+******************* Step-4.1 : After Applying Feed Forward Neural Network **********************  torch.Size([1, 9, 256])
+******************* Step-4.1 : After Applying Residual and normalization (on Feed Forward) **********************  torch.Size([1, 9, 256])
 
 ******************* Step-3.1 : Processing Layer Number **********************  4
 ******************* Step-4.1 : The value shape is **********************  torch.Size([1, 9, 256])
@@ -109,6 +121,10 @@ The Target Mask Shape is :  torch.Size([1, 1, 7, 7])
 ******************* Step-5.1 : The Attention Shape is **********************  torch.Size([1, 8, 9, 9])
 ******************* Step-5.1 : The Out Shape is **********************  torch.Size([1, 9, 256])
 ******************* Step-5.1 : The Out Shape AfterFC is **********************  torch.Size([1, 9, 256])
+******************* Step-4.1 : The Attention results are captured ********************** 
+******************* Step-4.1 : After Applying Residual and normalization (on Multi Head Attention) **********************  torch.Size([1, 9, 256])
+******************* Step-4.1 : After Applying Feed Forward Neural Network **********************  torch.Size([1, 9, 256])
+******************* Step-4.1 : After Applying Residual and normalization (on Feed Forward) **********************  torch.Size([1, 9, 256])
 
 ******************* Step-3.1 : Processing Layer Number **********************  5
 ******************* Step-4.1 : The value shape is **********************  torch.Size([1, 9, 256])
@@ -124,6 +140,10 @@ The Target Mask Shape is :  torch.Size([1, 1, 7, 7])
 ******************* Step-5.1 : The Attention Shape is **********************  torch.Size([1, 8, 9, 9])
 ******************* Step-5.1 : The Out Shape is **********************  torch.Size([1, 9, 256])
 ******************* Step-5.1 : The Out Shape AfterFC is **********************  torch.Size([1, 9, 256])
+******************* Step-4.1 : The Attention results are captured ********************** 
+******************* Step-4.1 : After Applying Residual and normalization (on Multi Head Attention) **********************  torch.Size([1, 9, 256])
+******************* Step-4.1 : After Applying Feed Forward Neural Network **********************  torch.Size([1, 9, 256])
+******************* Step-4.1 : After Applying Residual and normalization (on Feed Forward) **********************  torch.Size([1, 9, 256])
 
 ******************* Step-3.1 : Processing Layer Number **********************  6
 ******************* Step-4.1 : The value shape is **********************  torch.Size([1, 9, 256])
@@ -139,6 +159,10 @@ The Target Mask Shape is :  torch.Size([1, 1, 7, 7])
 ******************* Step-5.1 : The Attention Shape is **********************  torch.Size([1, 8, 9, 9])
 ******************* Step-5.1 : The Out Shape is **********************  torch.Size([1, 9, 256])
 ******************* Step-5.1 : The Out Shape AfterFC is **********************  torch.Size([1, 9, 256])
+******************* Step-4.1 : The Attention results are captured ********************** 
+******************* Step-4.1 : After Applying Residual and normalization (on Multi Head Attention) **********************  torch.Size([1, 9, 256])
+******************* Step-4.1 : After Applying Feed Forward Neural Network **********************  torch.Size([1, 9, 256])
+******************* Step-4.1 : After Applying Residual and normalization (on Feed Forward) **********************  torch.Size([1, 9, 256])
 
 - The Encoder has 6 Layers (6 Transformer Blocks)
 - Each Layer

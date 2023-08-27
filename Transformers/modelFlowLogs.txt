@@ -1,0 +1,171 @@
+******************* Step-1 : The Source data is Masked *******************
+Making the Source Mask....
+The Source is :  tensor([[1, 5, 6, 4, 3, 9, 5, 2, 0]])
+The Source Shape is :  torch.Size([1, 9])
+The Source Mask is :  tensor([[[[ True,  True,  True,  True,  True,  True,  True,  True, False]]]])
+The Source Mask Shape is :  torch.Size([1, 1, 1, 9])
+--------------------------------------------------------------------------------------------------------------
+
+******************* Step-2 : The Target data is Masked *******************
+Making the Target Mask...
+The Target is :  tensor([[1, 7, 4, 3, 5, 9, 2]])
+The Target Shape is :  torch.Size([1, 7])
+The N value is :  1
+The Target Length is :  7
+The Target Mask is :  tensor([[[[1., 0., 0., 0., 0., 0., 0.],
+          [1., 1., 0., 0., 0., 0., 0.],
+          [1., 1., 1., 0., 0., 0., 0.],
+          [1., 1., 1., 1., 0., 0., 0.],
+          [1., 1., 1., 1., 1., 0., 0.],
+          [1., 1., 1., 1., 1., 1., 0.],
+          [1., 1., 1., 1., 1., 1., 1.]]]])
+The Target Mask Shape is :  torch.Size([1, 1, 7, 7])
+--------------------------------------------------------------------------------------------------------------
+
+******************* Step-3 : Encoder is run to Encode the Source data *******************
+******************* Step-3.1 : Encoder Forward Method*******************
+******************* Step-3.1 : The Value of x is **********************  tensor([[1, 5, 6, 4, 3, 9, 5, 2, 0]])
+******************* Step-3.1 : The Shape of x is **********************  torch.Size([1, 9])
+******************* Step-3.1 : The N value - Batch Size is **********************  1
+******************* Step-3.1 : The Total Length of the Input Sentence is **********************  9
+******************* Step-3.1 : The Positions is **********************  tensor([[0, 1, 2, 3, 4, 5, 6, 7, 8]])
+******************* Step-3.1 : The Positions Shape is **********************  torch.Size([1, 9])
+******************* Step-3.1 : The Word Embedding result Shape is **********************  torch.Size([1, 9, 256])
+******************* Step-3.1 : The Position Embedding result Shape is **********************  torch.Size([1, 9, 256])
+******************* Step-3.1 : The Output Embedding result Shape is **********************  torch.Size([1, 9, 256])
+
+- It is Noticed that the Encoder has taken the Input Sentence as tensor `x` (including the padding)
+- The Batch Size (total input) is 1; Total Length of the Input Sequence is 9 (including the padding)
+- The Position for each element in input tensor (including the padding) is intitialized
+- The Word Embedding Shape is 1,9,256
+    - 1 is the Batch Size
+    - 9 is the Sequence Length (The Length of the Input Sentence)
+    - 256 is the Embedding Size
+- The Position Embedding Shape is 1,9,256
+    - 1 is the Batch Size
+    - 9 is the Sequence Length (The Length of the Input Sentence's corresponding Position)
+    - 256 is the Embedding Size
+- The Word Embedding and Position Embeddings are added, and the resulting `out` shape is 1,9,256
+    - 1 is the Batch Size
+    - 9 is the Sequence Length (The Length of the (input sentence + position))
+    - 256 is the Embedding Size
+
+******************* Step-3.1 : Processing Layer Number **********************  1
+******************* Step-4.1 : The value shape is **********************  torch.Size([1, 9, 256])
+******************* Step-4.1 : The key shape is **********************  torch.Size([1, 9, 256])
+******************* Step-4.1 : The query shape is **********************  torch.Size([1, 9, 256])
+******************* Step-4.1 : The mask is **********************  tensor([[[[ True,  True,  True,  True,  True,  True,  True,  True, False]]]])
+******************* Step-4.1 : The mask shape is **********************  torch.Size([1, 1, 1, 9])
+******************* Step-4.1 : Calling the Self Attention Block ********************** 
+******************* Step-5.1 : The Rehsaped values is **********************  torch.Size([1, 9, 8, 32])
+******************* Step-5.1 : The Rehsaped keys is **********************  torch.Size([1, 9, 8, 32])
+******************* Step-5.1 : The Rehsaped queries is **********************  torch.Size([1, 9, 8, 32])
+******************* Step-5.1 : The Energy Shape is **********************  torch.Size([1, 8, 9, 9])
+******************* Step-5.1 : The Attention Shape is **********************  torch.Size([1, 8, 9, 9])
+******************* Step-5.1 : The Out Shape is **********************  torch.Size([1, 9, 256])
+******************* Step-5.1 : The Out Shape AfterFC is **********************  torch.Size([1, 9, 256])
+
+******************* Step-3.1 : Processing Layer Number **********************  2
+******************* Step-4.1 : The value shape is **********************  torch.Size([1, 9, 256])
+******************* Step-4.1 : The key shape is **********************  torch.Size([1, 9, 256])
+******************* Step-4.1 : The query shape is **********************  torch.Size([1, 9, 256])
+******************* Step-4.1 : The mask is **********************  tensor([[[[ True,  True,  True,  True,  True,  True,  True,  True, False]]]])
+******************* Step-4.1 : The mask shape is **********************  torch.Size([1, 1, 1, 9])
+******************* Step-4.1 : Calling the Self Attention Block ********************** 
+******************* Step-5.1 : The Rehsaped values is **********************  torch.Size([1, 9, 8, 32])
+******************* Step-5.1 : The Rehsaped keys is **********************  torch.Size([1, 9, 8, 32])
+******************* Step-5.1 : The Rehsaped queries is **********************  torch.Size([1, 9, 8, 32])
+******************* Step-5.1 : The Energy Shape is **********************  torch.Size([1, 8, 9, 9])
+******************* Step-5.1 : The Attention Shape is **********************  torch.Size([1, 8, 9, 9])
+******************* Step-5.1 : The Out Shape is **********************  torch.Size([1, 9, 256])
+******************* Step-5.1 : The Out Shape AfterFC is **********************  torch.Size([1, 9, 256])
+
+******************* Step-3.1 : Processing Layer Number **********************  3
+******************* Step-4.1 : The value shape is **********************  torch.Size([1, 9, 256])
+******************* Step-4.1 : The key shape is **********************  torch.Size([1, 9, 256])
+******************* Step-4.1 : The query shape is **********************  torch.Size([1, 9, 256])
+******************* Step-4.1 : The mask is **********************  tensor([[[[ True,  True,  True,  True,  True,  True,  True,  True, False]]]])
+******************* Step-4.1 : The mask shape is **********************  torch.Size([1, 1, 1, 9])
+******************* Step-4.1 : Calling the Self Attention Block ********************** 
+******************* Step-5.1 : The Rehsaped values is **********************  torch.Size([1, 9, 8, 32])
+******************* Step-5.1 : The Rehsaped keys is **********************  torch.Size([1, 9, 8, 32])
+******************* Step-5.1 : The Rehsaped queries is **********************  torch.Size([1, 9, 8, 32])
+******************* Step-5.1 : The Energy Shape is **********************  torch.Size([1, 8, 9, 9])
+******************* Step-5.1 : The Attention Shape is **********************  torch.Size([1, 8, 9, 9])
+******************* Step-5.1 : The Out Shape is **********************  torch.Size([1, 9, 256])
+******************* Step-5.1 : The Out Shape AfterFC is **********************  torch.Size([1, 9, 256])
+
+******************* Step-3.1 : Processing Layer Number **********************  4
+******************* Step-4.1 : The value shape is **********************  torch.Size([1, 9, 256])
+******************* Step-4.1 : The key shape is **********************  torch.Size([1, 9, 256])
+******************* Step-4.1 : The query shape is **********************  torch.Size([1, 9, 256])
+******************* Step-4.1 : The mask is **********************  tensor([[[[ True,  True,  True,  True,  True,  True,  True,  True, False]]]])
+******************* Step-4.1 : The mask shape is **********************  torch.Size([1, 1, 1, 9])
+******************* Step-4.1 : Calling the Self Attention Block ********************** 
+******************* Step-5.1 : The Rehsaped values is **********************  torch.Size([1, 9, 8, 32])
+******************* Step-5.1 : The Rehsaped keys is **********************  torch.Size([1, 9, 8, 32])
+******************* Step-5.1 : The Rehsaped queries is **********************  torch.Size([1, 9, 8, 32])
+******************* Step-5.1 : The Energy Shape is **********************  torch.Size([1, 8, 9, 9])
+******************* Step-5.1 : The Attention Shape is **********************  torch.Size([1, 8, 9, 9])
+******************* Step-5.1 : The Out Shape is **********************  torch.Size([1, 9, 256])
+******************* Step-5.1 : The Out Shape AfterFC is **********************  torch.Size([1, 9, 256])
+
+******************* Step-3.1 : Processing Layer Number **********************  5
+******************* Step-4.1 : The value shape is **********************  torch.Size([1, 9, 256])
+******************* Step-4.1 : The key shape is **********************  torch.Size([1, 9, 256])
+******************* Step-4.1 : The query shape is **********************  torch.Size([1, 9, 256])
+******************* Step-4.1 : The mask is **********************  tensor([[[[ True,  True,  True,  True,  True,  True,  True,  True, False]]]])
+******************* Step-4.1 : The mask shape is **********************  torch.Size([1, 1, 1, 9])
+******************* Step-4.1 : Calling the Self Attention Block ********************** 
+******************* Step-5.1 : The Rehsaped values is **********************  torch.Size([1, 9, 8, 32])
+******************* Step-5.1 : The Rehsaped keys is **********************  torch.Size([1, 9, 8, 32])
+******************* Step-5.1 : The Rehsaped queries is **********************  torch.Size([1, 9, 8, 32])
+******************* Step-5.1 : The Energy Shape is **********************  torch.Size([1, 8, 9, 9])
+******************* Step-5.1 : The Attention Shape is **********************  torch.Size([1, 8, 9, 9])
+******************* Step-5.1 : The Out Shape is **********************  torch.Size([1, 9, 256])
+******************* Step-5.1 : The Out Shape AfterFC is **********************  torch.Size([1, 9, 256])
+
+******************* Step-3.1 : Processing Layer Number **********************  6
+******************* Step-4.1 : The value shape is **********************  torch.Size([1, 9, 256])
+******************* Step-4.1 : The key shape is **********************  torch.Size([1, 9, 256])
+******************* Step-4.1 : The query shape is **********************  torch.Size([1, 9, 256])
+******************* Step-4.1 : The mask is **********************  tensor([[[[ True,  True,  True,  True,  True,  True,  True,  True, False]]]])
+******************* Step-4.1 : The mask shape is **********************  torch.Size([1, 1, 1, 9])
+******************* Step-4.1 : Calling the Self Attention Block ********************** 
+******************* Step-5.1 : The Rehsaped values is **********************  torch.Size([1, 9, 8, 32])
+******************* Step-5.1 : The Rehsaped keys is **********************  torch.Size([1, 9, 8, 32])
+******************* Step-5.1 : The Rehsaped queries is **********************  torch.Size([1, 9, 8, 32])
+******************* Step-5.1 : The Energy Shape is **********************  torch.Size([1, 8, 9, 9])
+******************* Step-5.1 : The Attention Shape is **********************  torch.Size([1, 8, 9, 9])
+******************* Step-5.1 : The Out Shape is **********************  torch.Size([1, 9, 256])
+******************* Step-5.1 : The Out Shape AfterFC is **********************  torch.Size([1, 9, 256])
+
+- The Encoder has 6 Layers (6 Transformer Blocks)
+- Each Layer
+
+
+
+- In the Self Attention Block, the Value of N is 1. Initially The Shape of 
+    - value is (1,9,256)
+    - key is (1,9,256)
+    - query is (1,9,256)
+- The Reshaped (256 Embedding dimension is divided into 8 heads, each 32 dimensions)
+    - value is (1, 9, 8, 32)
+    - key is (1, 9, 8, 32)
+    - query is (1, 9, 8, 32)
+- The Energy vector's shape is
+    - (1,8,9,9)
+    - 1 - Batch Size
+    - 8 - The Head Size
+    - 9 - Query Length
+    - 9 - Key Length
+- The Attention vector's shape is
+    - (1,9,256)
+    - 1 - Batch Size
+    - 9 - Length of Query vector
+    - 256 - Embedding Dimension
+- The Out vector's shape is 
+    - (1, 9, 256)
+    - 1 - Batch Size
+    - 9 - Length of Query vector
+    - 256 - Embedding Dimension

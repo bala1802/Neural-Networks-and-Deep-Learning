@@ -16,6 +16,10 @@ Note:
 - Shape of the Target Tensor - `torch.Size([1, 8])`
   * Batch Size is `1`. We have one corresponding target tensor
   * The length of the target sentence is `8`
+- The Padding Index will be `0` while padding the input and output sentence
+- The Source and Target Vocabulary size is `10`
 
 ## Encoder:
+
+<img width="245" alt="image" src="https://github.com/bala1802/Neural-Networks-and-Deep-Learning/assets/22103095/92153333-6931-46d5-97e2-af32449370ea">
 

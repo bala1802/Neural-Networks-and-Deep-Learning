@@ -12,8 +12,9 @@ Note:
 - Shape of the Source Tensor - `torch.Size([1, 9])`
   * Batch Size is `1`. We just have only one input sentence
   * The length of the input sequence is `9`
-- Shape of the Target Tensor - `tensor([[1, 7, 4, 3, 5, 9, 2, 0]])`
-  * 
+- Shape of the Target Tensor - `torch.Size([1, 8])`
+  * Batch Size is `1`. We have one corresponding target tensor
+  * The length of the target sentence is `8`
 
 ## Encoder:
 

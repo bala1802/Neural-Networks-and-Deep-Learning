@@ -23,3 +23,14 @@ Note:
 
 <img width="245" alt="image" src="https://github.com/bala1802/Neural-Networks-and-Deep-Learning/assets/22103095/92153333-6931-46d5-97e2-af32449370ea">
 
+### Preparing the Input:
+
+The Encoder accepts, `src` and `src_mask`
+- `src` -> `tensor([[1, 5, 6, 4, 3, 9, 5, 2, 0]])`
+- Shape of the `src` -> `torch.Size([1, 9])`
+- Let's understand the `src_mask`
+  * Inside a batch, the input sequence length will vary for each source sentence. The Sequence length is determined to be the maximum length of the sentence available in the training dataset. So, for the rest of the training dataset, the (max_length - len(current_sentence) is set to be masked.
+  * For the `src_mask` in our example will be `tensor([[[[ True,  True,  True,  True,  True,  True,  True,  True, False]]]])`.
+  * The value `0` denotes that it is a padded token. So `False` as a last element in the `src_mask`
+ 
+Now we're ready with 

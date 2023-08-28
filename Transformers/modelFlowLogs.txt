@@ -193,3 +193,21 @@ The Target Mask Shape is :  torch.Size([1, 1, 7, 7])
     - 1 - Batch Size
     - 9 - Length of Query vector
     - 256 - Embedding Dimension
+
+******************* Step-A : The Decoder is Called *******************
+******************* Step-A.1 : Decoder - x is ******************* tensor([[1, 7, 4, 3, 5, 9, 2]])
+******************* Step-A.1 : Decoder - N is ******************* 1
+******************* Step-A.1 : Decoder - seq_length is ******************* 7
+******************* Step-A.1 : Decoder - positions is ******************* tensor([[0, 1, 2, 3, 4, 5, 6]])
+******************* Step-A.1 : Decoder - Shape of (Addition of Word Embeddings and Positions) is ******************* torch.Size([1, 7, 256])
+
+Decoder:
+
+- N - The batch size of the Target sentences is 1. Only one sentence (The dataset size is 1)
+- The sequence length is 7 (target sentence's length)
+- The positions are represented from 0 to 6 for the Target sentence (tokens) tensor([[1, 7, 4, 3, 5, 9, 2]])
+- The Shape of the target sentence after word+position embedings is (1,7,256)
+    - 1 - The Batch Size
+    - 7 - The Sequence Length (length of the target sentence)
+    - 256 - Word embedding dimension
+

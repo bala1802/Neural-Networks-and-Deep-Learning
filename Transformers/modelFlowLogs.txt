@@ -217,27 +217,36 @@ Decoder:
 
 {This below logs observed 6 times - for 6 layers}
 ******************* Step-A.1 : Processing The DecoderBlock -  1  *******************
-******************* Step-A.1 : DecoderBlock The Attention is calculated for Value, Key, Query  ******************* 
+******************* Step-A.1 : DecoderBlock The Attention is calculated for x (target data)  ******************* 
                                 torch.Size([1, 7, 256])
+******************* Step-A.1 : DecoderBlock The Attention is calculated for Value,key (enc_output)  ******************* 
+                                torch.Size([1, 9, 256])
 ******************* Step-A.1 : DecoderBlock The Attention is calculated for trg_mask  ******************* 
-                                tensor([[[[1., 0., 0., 0., 0., 0., 0.],
-                                        [1., 1., 0., 0., 0., 0., 0.],
-                                        [1., 1., 1., 0., 0., 0., 0.],
-                                        [1., 1., 1., 1., 0., 0., 0.],
-                                        [1., 1., 1., 1., 1., 0., 0.],
-                                        [1., 1., 1., 1., 1., 1., 0.],
-                                        [1., 1., 1., 1., 1., 1., 1.]]]])
+                            tensor([[[[1., 0., 0., 0., 0., 0., 0.],
+                                [1., 1., 0., 0., 0., 0., 0.],
+                                [1., 1., 1., 0., 0., 0., 0.],
+                                [1., 1., 1., 1., 0., 0., 0.],
+                                [1., 1., 1., 1., 1., 0., 0.],
+                                [1., 1., 1., 1., 1., 1., 0.],
+                                [1., 1., 1., 1., 1., 1., 1.]]]])
 ******************* Step-A.1 : DecoderBlock The Attention is calculated for trg_mask.shape  ******************* 
-                                torch.Size([1, 1, 7, 7])
+                            torch.Size([1, 1, 7, 7])
+
 
 Decoder Block
 
-- The Attention is calculated for Value, Key, Query. Shape - (1,7,256)
+- The Attention is calculated for Target Data. Shape - (1,7,256)
     - 1 - The Batch Size
     - 7 - The Sequence Length (target sentence length)
     - 256 - Target Embedding Dimension
+
 - The target mask shape is (1,1,7,7)
     - 1 - The Batch Size
     - 1 - The Number of examples
     - 7 - Target Sequence Length
     - 7 - Number of Parallel Decoders
+
+- The Encoder output (value and key) shape is (1,9,256)
+    - 1 - The Batch Size
+    - 9 - The Length of the Source Sentence
+    - 256 - Embedding dimension

@@ -25,7 +25,7 @@ Note:
 
 ### Preparing the Input:
 
-The Encoder accepts, `src` and `src_mask`
+`src` and `src_mask`
 - `src` -> `tensor([[1, 5, 6, 4, 3, 9, 5, 2, 0]])`
 - Shape of the `src` -> `torch.Size([1, 9])`
 - Let's understand the `src_mask`

@@ -25,7 +25,8 @@ Note:
 
 ### Encoder Initialization:
 - The `embedding_size` is 256
-- The `word_embedding` dimension is configured to `(src_vocab_size, embedding_size)` = `(10, 256)`
+- The `word_embedding` dimension is configured to `(src_vocab_size, embedding_size)` = `(10, 256)`. The Source sentence's vocabulary size is `10`
+- The `position_embedding` dimension is configured to `(max_sequence_length, embedding_size)` = `(9, 256)`. The Sequence length of the 
 
 ### Preparing the Input:
 

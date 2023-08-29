@@ -26,7 +26,7 @@ Note:
 ### Encoder Initialization:
 - The `embedding_size` is 256
 - The `word_embedding` dimension is configured to `(src_vocab_size, embedding_size)` = `(10, 256)`. The Source sentence's vocabulary size is `10`
-- The `position_embedding` dimension is configured to `(max_sequence_length, embedding_size)` = `(9, 256)`. The Sequence length of the 
+- The `position_embedding` dimension is configured to `(max_sequence_length, embedding_size)` = `(9, 256)`. The Sequence length of the source sentence is `9`
 
 ### Preparing the Input:
 
@@ -41,6 +41,7 @@ Note:
 Now we're ready with the `src` and `src_mask`, lets understand what the `Encoder` does internally
 - As a first step, the `position_embeddings` and `word_embeddings` are calculated
 - We have the sequence length as `9`. And the batch size as `1`. So the `position_embeddings` shape is initialized to `(1,9)` Later Calculated
-- 
+- After passing the `source` statement to the `word embedding` layer, the `word_embeddings` dimension is resulted as `torch.Size([1, 9, 256])`
+- After passing the `position` to the `position embedding` layer, the `position_embeddings` dimension is resulted as `torch.Size([1, 9, 256])`
   
 

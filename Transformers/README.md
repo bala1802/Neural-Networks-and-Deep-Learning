@@ -43,5 +43,6 @@ Now we're ready with the `src` and `src_mask`, lets understand what the `Encoder
 - We have the sequence length as `9`. And the batch size as `1`. So the `position_embeddings` shape is initialized to `(1,9)` Later Calculated
 - After passing the `source` statement to the `word embedding` layer, the `word_embeddings` dimension is resulted as `torch.Size([1, 9, 256])`
 - After passing the `position` to the `position embedding` layer, the `position_embeddings` dimension is resulted as `torch.Size([1, 9, 256])`
-  
+- The `word_embedding` and `position_embedding` are added, `out = result_of_word_embedding + result_of_position_embedding`.
+- `out` is the `value`, `key` and `query` to the `Transformer Block`  
 

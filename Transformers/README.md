@@ -33,4 +33,6 @@ Note:
   * For the `src_mask` in our example will be `tensor([[[[ True,  True,  True,  True,  True,  True,  True,  True, False]]]])`.
   * The value `0` denotes that it is a padded token. So `False` as a last element in the `src_mask`
  
-Now we're ready with 
+Now we're ready with the `src` and `src_mask`, lets understand what the `Encoder` does internally
+
+

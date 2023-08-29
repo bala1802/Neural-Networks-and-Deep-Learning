@@ -61,9 +61,9 @@ The Transformer block is comprised of (sequentially),
   4.  Add & Norm
 
   #### 1. Multihead Attention Layer:
-  - The `key`, `value` and `query` are sent into the `Self Attention` layer
-  - `key`, `value`, `query` = `out`. Shape is `(1,9,256)`
-  - From the above, we can understand that, the `Self Attention` takes the `Batch Size` - `1`; Sequence length of the input source `9`; The embedding dimension is `256` 
+
+  ![Alt text](36200Attention-formula.png)
+
   - `Self Attention` Initialization:
     * The number of `heads` are configured in the beginning as `8`
     * The `embed` dimension is set to `256`
@@ -74,7 +74,10 @@ The Transformer block is comprised of (sequentially),
     * `Linear Layer for Fully Connected Output` - with the shape of `(dimension_of_each_head*number_of_heads, dimension_of_each_head)` -> `(32*8, 256)` -> `(256, 256)`
   - `Self Attention` Mechanism: This block runs 6 times
     * `LOOP 6 times`
+      - The `key`, `value` and `query` are received
+      - `key`, `value`, `query` Shape is `(1,9,256)`
+      - From the above, we can understand that, the `Self Attention` takes the `Batch Size` - `1`; Sequence length of the input source `9`; The embedding dimension is `256`
       - The `value_length` is extracted from the shape of `value` <- `value.shape[1]` which is nothing but `9` from `(1,9,256)`
       - The `key_length` is extracted from the shape of `key` <- `key.shape[1]` which is nothing but `9` from `(1,9,256)`
       - The `query_length` is extracted from the shape of `query` <- `query.shape[1]` which is nothing but `9` from `(1,9,256)`
-      - Convert the `value`, `key` and `query` into a `Linear` layer each
+      - Convert the `value`, `key` and `query` into a `Linear` layer each. After the conversion, the shape of `value`, `key` and `query` will be `torch.Size([1, 9, 8, 32])` which is nothing but `(batch_size, sequence_length, number_of_heads, dimension_of_head)`

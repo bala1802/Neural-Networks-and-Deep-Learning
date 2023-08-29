@@ -49,3 +49,9 @@ Now we're ready with the `src` and `src_mask`, lets understand what the `Encoder
 ### Encoder Calling the `Transformer Block`
 
 The `out` which will be the `value`, `key` and `query` sent to the `Transformer Block`
+
+Let's understand the `Transformer Block`
+
+![Alt text](image.png)
+
+About:

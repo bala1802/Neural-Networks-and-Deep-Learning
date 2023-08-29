@@ -23,11 +23,6 @@ Note:
 
 <img width="245" alt="image" src="https://github.com/bala1802/Neural-Networks-and-Deep-Learning/assets/22103095/92153333-6931-46d5-97e2-af32449370ea">
 
-### Encoder Initialization:
-- The `embedding_size` is 256
-- The `word_embedding` dimension is configured to `(src_vocab_size, embedding_size)` = `(10, 256)`. The Source sentence's vocabulary size is `10`
-- The `position_embedding` dimension is configured to `(max_sequence_length, embedding_size)` = `(9, 256)`. The Sequence length of the source sentence is `9`
-
 ### Preparing the Input:
 
 `src` and `src_mask`
@@ -37,7 +32,12 @@ Note:
   * Inside a batch, the input sequence length will vary for each source sentence. The Sequence length is determined to be the maximum length of the sentence available in the training dataset. So, for the rest of the training dataset, the (max_length - len(current_sentence) is set to be masked.
   * For the `src_mask` in our example will be `tensor([[[[ True,  True,  True,  True,  True,  True,  True,  True, False]]]])`.
   * The value `0` denotes that it is a padded token. So `False` as a last element in the `src_mask`
- 
+
+### Encoder Initialization:
+- The `embedding_size` is 256
+- The `word_embedding` dimension is configured to `(src_vocab_size, embedding_size)` = `(10, 256)`. The Source sentence's vocabulary size is `10`
+- The `position_embedding` dimension is configured to `(max_sequence_length, embedding_size)` = `(9, 256)`. The Sequence length of the source sentence is `9`
+
 Now we're ready with the `src` and `src_mask`, lets understand what the `Encoder` does internally
 - As a first step, the `position_embeddings` and `word_embeddings` are calculated
 - We have the sequence length as `9`. And the batch size as `1`. So the `position_embeddings` shape is initialized to `(1,9)` Later Calculated

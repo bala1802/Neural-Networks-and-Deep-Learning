@@ -67,4 +67,8 @@ The Transformer block is comprised of (sequentially),
   - `Self Attention` Initialization:
     * The number of `heads` are configured in the beginning as `8`
     * The `embed` dimension is set to `256`
-    * Calculate the dimension for each `head`; `dimension_of_head` is `(256/8) = 32`
+    * Calculate the dimension for each `head`; `dimension_of_each_head` is `(256/8) = 32`
+    * A `Linear` layer is initialized for `value`, `key` and `query`
+    * `Linear Layer for value` - with the shape of `(dimension_of_each_head, dimension_of_each_head)` -> `(32, 32)`
+    * `Linear Layer for key` - with the shape of `(dimension_of_each_head, dimension_of_each_head)` -> `(32, 32)`
+    * `Linear Layer for Fully Connected Output` - with the shape of `(dimension_of_each_head*number_of_heads, dimension_of_each_head)` -> `(32*8, 256)` -> `(256, 256)`

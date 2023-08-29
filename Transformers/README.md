@@ -55,10 +55,10 @@ Let's understand the `Transformer Block`
 ![Alt text](image.png)
 
 The Transformer block is comprised of (sequentially), 
-  A. Multihead Attention layer
-  B. Add & Norm
-  C. Feed Forward layer
-  D. Add & Norm
+  1.  Multihead Attention layer
+  2.  Add & Norm
+  3.  Feed Forward layer
+  4.  Add & Norm
 
   #### A. Multihead Attention Layer:
   - The `key`, `value` and `query` are sent into the `Self Attention` layer

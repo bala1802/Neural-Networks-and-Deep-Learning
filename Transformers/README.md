@@ -46,3 +46,6 @@ Now we're ready with the `src` and `src_mask`, lets understand what the `Encoder
 - The `word_embedding` and `position_embedding` are added, `out = result_of_word_embedding + result_of_position_embedding`.
 - `out` is the `value`, `key` and `query` to the `Transformer Block`  
 
+### Encoder Calling the `Transformer Block`
+
+The `out` which will be the `value`, `key` and `query` sent to the `Transformer Block`

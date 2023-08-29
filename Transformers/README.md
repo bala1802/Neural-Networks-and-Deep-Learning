@@ -6,7 +6,7 @@ Note:
   - This blog is written to understand what happens internally in the Transformers code.
   - I have used one simple example where I have a Source Sentence, represented in Tensor as `tensor([[1, 5, 6, 4, 3, 9, 5, 2, 0]])`
   - and a Target Sentence, represented in Tensor as `tensor([[1, 7, 4, 3, 5, 9, 2, 0]])`
-  - The Input and Output are passed to the Encoder, Decoder  blocks to understand how the data is handled, what will be the output and shape of the tensors in each stage
+  - The Input and Output are passed to the Encoder, Decoder blocks to understand how the data is handled, what will be the output and shape of the tensors in each stage
 
 ## Data Understanding:
 
@@ -48,17 +48,23 @@ Now we're ready with the `src` and `src_mask`, lets understand what the `Encoder
 
 ### Encoder Calling the `Transformer Block`
 
-The `out` which will be the `value`, `key` and `query` sent to the `Transformer Block`
+The `out` which will be the `value`, `key` and `query` sent to the `Transformer Block`. The `Encoder` is configured with `6` layers. It means the `Transformer Block` is called `6` times
 
 Let's understand the `Transformer Block`
 
 ![Alt text](image.png)
 
 The Transformer block is comprised of (sequentially), 
-  - Multihead Attention layer
-  - Add & Norm
-  - Feed Forward layer
-  - Add & Norm
+  A. Multihead Attention layer
+  B. Add & Norm
+  C. Feed Forward layer
+  D. Add & Norm
 
-  #### Multihead Attention Layer:
-  - The
+  #### A. Multihead Attention Layer:
+  - The `key`, `value` and `query` are sent into the `Self Attention` layer
+  - `key`, `value`, `query` = `out`. Shape is `(1,9,256)`
+  - From the above, we can understand that, the `Self Attention` takes the `Batch Size` - `1`; Sequence length of the input source `9`; The embedding dimension is `256` 
+  - `Self Attention` Initialization:
+    * The number of `heads` are configured in the beginning as `8`
+    * The `embed` dimension is set to `256`
+    * Calculate the dimension for each `head`; `dimension_of_head` is `(256/8) = 32`

@@ -29,7 +29,7 @@ Note:
 - `src` -> `tensor([[1, 5, 6, 4, 3, 9, 5, 2, 0]])`
 - Shape of the `src` -> `torch.Size([1, 9])`
 - Let's understand the `src_mask`
-  * Inside a batch, the input sequence length will vary for each source sentence. The Sequence length is determined to be the maximum length of the sentence available in the training dataset. So, for the rest of the training dataset, the (max_length - len(current_sentence) is set to be masked.
+  * Inside a batch, the input sequence length will vary for each source sentence. The Sequence length is determined to be the maximum length of the sentence available in the training dataset. So, for the rest of the training dataset, the (max_length - len(current_sentence)) is set to be masked.
   * For the `src_mask` in our example will be `tensor([[[[ True,  True,  True,  True,  True,  True,  True,  True, False]]]])`.
   * The value `0` denotes that it is a padded token. So `False` as a last element in the `src_mask`
 
@@ -80,4 +80,19 @@ The Transformer block is comprised of (sequentially),
       - The `value_length` is extracted from the shape of `value` <- `value.shape[1]` which is nothing but `9` from `(1,9,256)`
       - The `key_length` is extracted from the shape of `key` <- `key.shape[1]` which is nothing but `9` from `(1,9,256)`
       - The `query_length` is extracted from the shape of `query` <- `query.shape[1]` which is nothing but `9` from `(1,9,256)`
-      - Convert the `value`, `key` and `query` into a `Linear` layer each. After the conversion, the shape of `value`, `key` and `query` will be `torch.Size([1, 9, 8, 32])` which is nothing but `(batch_size, sequence_length, number_of_heads, dimension_of_head)`
+      - Convert the `value`, `key` and `query` into a `Linear` layer each. After the conversion, the shape of `value`, `key` and `query` will be `torch.Size([1, 9, 8, 32])` which is nothing but `(batch_size, sequence_length, number_of_heads, dimension_of_each_head)`
+      - The `energy` from the `Attention` formula is represented as  `energy = query * transpose(key)`. 
+      - To achieve this, `energy = torch.einsum("nqhd, nkhd -> nhqk", [queries, keys])`. Refer torch.einsum documentation.
+      - `nqhd` denotes the shape of the `query` -> `(1,9,8,32)`; 
+        * `n=1` is the `batch_size`; `q=9` is the `sequence_length`; `h=8` is the `number of heads`; `d=32` is the `dimension_of_head`;
+      - `nkhd` denotes the shape of the `key` -> `(1,9,8,32)`
+        * `n=1` is the `batch_size`; `k=9` is the `sequence_length`; `h=8` is the `number of heads`; `d=32` is the `dimension_of_head`;
+      - The matrix multiplication of `query * transpose(key)` is achieved by `energy = torch.einsum("nqhd, nkhd -> nhqk", [queries, keys])`.
+      - The resulting `energy` `(n,h,q,k)` will be of shape `torch.Size([1, 8, 9, 9])`
+        * `n=1` is the `batch_size`; `h=8` is the `number of heads`; `q=9` is the `query`'s `sequence_length`; `k=9` is the `key`'s `sequence_length`
+      - In the `energy`, the masked `tensor element` - `0` is set to `-infinity`. When a `Softmax` is run, the negative infinity will ultimately turn to `Zero`
+      - `attention` is calculated using the `attention = torch.softmax(energy/(self.embed_size**(1/2)), dim=3)`
+        * the `softmax` is calculated across the `key` dimension `(dim=3)`
+        * the `energy` is of shape `(1, 8, 9, 9)`
+        * the `square_root` of `embedding_size=256` which is `square_root(256) = 16`
+        * the 

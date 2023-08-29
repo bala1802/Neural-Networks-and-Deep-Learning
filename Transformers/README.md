@@ -54,4 +54,11 @@ Let's understand the `Transformer Block`
 
 ![Alt text](image.png)
 
-About:
+The Transformer block is comprised of (sequentially), 
+  - Multihead Attention layer
+  - Add & Norm
+  - Feed Forward layer
+  - Add & Norm
+
+  #### Multihead Attention Layer:
+  - The

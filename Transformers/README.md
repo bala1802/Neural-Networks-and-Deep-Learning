@@ -23,6 +23,10 @@ Note:
 
 <img width="245" alt="image" src="https://github.com/bala1802/Neural-Networks-and-Deep-Learning/assets/22103095/92153333-6931-46d5-97e2-af32449370ea">
 
+### Encoder Initialization:
+- The `embedding_size` is 256
+- The `word_embedding` dimension is configured to `(src_vocab_size, embedding_size)` = `(10, 256)`
+
 ### Preparing the Input:
 
 `src` and `src_mask`
@@ -34,5 +38,8 @@ Note:
   * The value `0` denotes that it is a padded token. So `False` as a last element in the `src_mask`
  
 Now we're ready with the `src` and `src_mask`, lets understand what the `Encoder` does internally
-
+- As a first step, the `position_embeddings` and `word_embeddings` are calculated
+- We have the sequence length as `9`. And the batch size as `1`. So the `position_embeddings` shape is initialized to `(1,9)` Later Calculated
+- 
+  
 

@@ -95,4 +95,8 @@ The Transformer block is comprised of (sequentially),
         * the `softmax` is calculated across the `key` dimension `(dim=3)`
         * the `energy` is of shape `(1, 8, 9, 9)`
         * the `square_root` of `embedding_size=256` which is `square_root(256) = 16`
-        * the 
+        * the `tensor` division operation is done on the `energy` object like this `energy_tensor / 16`
+        * `softmax` is applied on the above result across the dimension `3` which corresponds to `key`
+        * storing the result of above step into the `attention` tensor
+      - `add` all the `8 heads` into single `head` by reshaping and sending it to a `fully connected neural network`
+        * continue....

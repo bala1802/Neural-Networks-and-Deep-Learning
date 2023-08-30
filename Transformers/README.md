@@ -106,3 +106,5 @@ The Transformer block is comprised of (sequentially),
         * Shape of `values` is represented as `(1,9,8,32)` -> `(n,l,h,d)`; `n=1` is the `batch_size`; `l=9` is the sequence_length of the `key`; `h=8` is the `number of heads`; `d=32` is the dimension of `1 head`
         * The matrix multiplication results as `(1,9,8,32)` -> `(n,q,h,d)`;  `n=1` is the `batch_size`; `q=9` is the sequence_length of the `query`; `h=8` is the `number of heads`; `d=32` is the dimension of `1 head`
         * The result of the above step will be `(1,9,256)` -> `(N, query_length, numberOfHeads*dimension_of_each_head)` which is `(1,9,8*32)` = `(1,9,256)`
+        * The result is then passed to a `Fully Connected Neural Network` where the sum of all the `8 heads` happens and results in the shape of `(1,9,256)`
+        * This particular iteration results a tensor with the shape - `(1,9,256)`

@@ -108,3 +108,5 @@ The Transformer block is comprised of (sequentially),
         * The result of the above step will be `(1,9,256)` -> `(N, query_length, numberOfHeads*dimension_of_each_head)` which is `(1,9,8*32)` = `(1,9,256)`
         * The result is then passed to a `Fully Connected Neural Network` where the sum of all the `8 heads` happens and results in the shape of `(1,9,256)`
         * This particular iteration results a tensor with the shape - `(1,9,256)`
+
+    #### 1. Multihead Attention Layer:

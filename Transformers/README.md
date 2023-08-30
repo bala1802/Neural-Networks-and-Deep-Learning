@@ -23,7 +23,7 @@ Note:
 
 <img width="245" alt="image" src="https://github.com/bala1802/Neural-Networks-and-Deep-Learning/assets/22103095/92153333-6931-46d5-97e2-af32449370ea">
 
-### Preparing the Input:
+### Preparing the Input for Encoder:
 
 `src` and `src_mask`
 - `src` -> `tensor([[1, 5, 6, 4, 3, 9, 5, 2, 0]])`
@@ -133,3 +133,8 @@ The Transformer block is comprised of (sequentially),
     * Normalization is done post the addition, and results in the shape of `(1,9,256)`
     * At this point, this will be the result from Encoder. This is sent as a `value` and `key` to the Decoder
 
+## Decoder:
+
+TODO - {Add image of the Decoder}
+
+### Preparing the Input for Decoder:

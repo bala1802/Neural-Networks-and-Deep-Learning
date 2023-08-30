@@ -103,4 +103,6 @@ The Transformer block is comprised of (sequentially),
         * The result is stored inside `out` variable
         * `out = torch.einsum("nhql,nlhd -> nqhd", [attention, values]).reshape(N, query_len, self.heads*self.head_dim)` Refer torch.einsum documentation. 
         * From the above, Shape of `attention` is represented as `torch.Size([1, 8, 9, 9])` -> `(n,h,q,l)`; `n=1` is the `batch_size`; `h=8` is the `number of heads`; `q=8` is the `query` sequence_length; `l=9` is the `value` sequence_length
-        * Shape of `values` is represented as `(1,9,8,32)`
+        * Shape of `values` is represented as `(1,9,8,32)` -> `(n,l,h,d)`; `n=1` is the `batch_size`; `l=9` is the sequence_length of the `key`; `h=8` is the `number of heads`; `d=32` is the dimension of `1 head`
+        * The matrix multiplication results as `(1,9,8,32)` -> `(n,q,h,d)`;  `n=1` is the `batch_size`; `q=9` is the sequence_length of the `query`; `h=8` is the `number of heads`; `d=32` is the dimension of `1 head`
+        * The result of the above step will be `(1,9,256)` -> `(N, query_length, numberOfHeads*dimension_of_each_head)` which is `(1,9,8*32)` = `(1,9,256)`

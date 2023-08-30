@@ -110,6 +110,14 @@ The Transformer block is comprised of (sequentially),
         * This particular iteration results a tensor with the shape - `(1,9,256)`
 
   #### 2. Add & Normalization Layer:
+  - TODO
+  - `Add & Normalization` This block runs immediately after calculating the Multihead Attention
+    * The inputs to the block will be the calculated `attention-output` and the `query` which comes as a skip connection from the `inputs`
+    * The shape of the `attention-output` will be `(1,9,256)`; The shape od the `query` will be `(1,9,256)`.
+    * The tensor addition of `attention-output` + `query` is done and results in the shape of `(1,9,256)`
+    * Normalization is done post the addition, and results in the shape of `(1,9,256)`.
+    * This result is sent to the `Feed Forward Neural Netword`
+    
 
   
 

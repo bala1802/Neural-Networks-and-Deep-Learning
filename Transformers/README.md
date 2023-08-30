@@ -117,7 +117,11 @@ The Transformer block is comprised of (sequentially),
     * The tensor addition of `attention-output` + `query` is done and results in the shape of `(1,9,256)`
     * Normalization is done post the addition, and results in the shape of `(1,9,256)`.
     * This result is sent to the `Feed Forward Neural Netword`
-    
 
+  #### 3. Feed Forward Neural Network:
+  - TODO
+  - `Feed Forward Neural Network` This block runs immediately after performing `Add & Normalization` layer
+    * The inputs to the block will be a tensor of the shape `(1,9,256)`. `1` is the `Batch Size`; `9` is the `sequence_length`; `256` is the `embedding_dimension`
+    * This feed forward neural network processes and results - `(1,9,256)`. `1` is the `Batch Size`; `9` is the `sequence_length`; `256` is the `embedding_dimension`
   
 

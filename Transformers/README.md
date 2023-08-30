@@ -99,4 +99,7 @@ The Transformer block is comprised of (sequentially),
         * `softmax` is applied on the above result across the dimension `3` which corresponds to `key`
         * storing the result of above step into the `attention` tensor
       - `add` all the `8 heads` into single `head` by reshaping and sending it to a `fully connected neural network`
-        * continue....
+        * Along with the `attention`, we need to send the `value` aswell. To do this, the `attention` and `values` are multiplied (matrix)
+        * The result is stored inside `out` variable
+        * `out = torch.einsum("nhql,nlhd -> nqhd", [attention, values]).reshape(N, query_len, self.heads*self.head_dim)` Refer torch.einsum documentation. 
+        * From the above, shape of `attention` is represented as `torch.Size([1, 8, 9, 9])` -> `(n,h,q,l)`; `n=1` is the `batch_size`; `h=8` is the `number of heads`; `q=8` is the `query` sequence_length; `l=9` is the `value` sequence_length

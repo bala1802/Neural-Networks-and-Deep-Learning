@@ -140,3 +140,23 @@ The Transformer block is comprised of (sequentially),
 ![Alt text](image-3.png)
 
 ### Preparing the Input for Decoder:
+
+`trg`, `enc_src`, `src_mask`, `trg_mask`
+
+- `trg` -> `tensor([[1, 7, 4, 3, 5, 9, 2]])`
+- Shape of the `trg` -> `torch.Size([1, 7])`
+- Let's understand the `trg_mask`. The `trg_mask` looks like this, 
+
+         `tensor([[[[1., 0., 0., 0., 0., 0., 0.],
+                    [1., 1., 0., 0., 0., 0., 0.],
+                    [1., 1., 1., 0., 0., 0., 0.],
+                    [1., 1., 1., 1., 0., 0., 0.],
+                    [1., 1., 1., 1., 1., 0., 0.],
+                    [1., 1., 1., 1., 1., 1., 0.],
+                    [1., 1., 1., 1., 1., 1., 1.]]]])`
+    As you can see, the shape of the `trg_mask` is `torch.Size([1, 1, 7, 7])`. We have `7` rows running parallely. In the 
+    * first row, expect the first `token`, rest all the tokens are masked
+    * second row, except the first, second `tokens` rest all the tokens are masked, and so on.
+    This is done to, let the decoder know that, you've 7 tokens to be predicted (except the first `token`), parallely. For example, the for the first row - the decoder should predict the second word for the given first word.
+
+- `src_mask` - Refer "Preparing the Input for Encoder"

@@ -110,7 +110,7 @@ The Transformer block is comprised of (sequentially),
         * This particular iteration results a tensor with the shape - `(1,9,256)`
 
   #### 2. Add & Normalization Layer:
-  - TODO {Add Image of Add & Normalization}
+  ![Alt text](image-1.png)
   - `Add & Normalization` This block runs immediately after calculating the Multihead Attention
     * The inputs to the block will be the calculated by adding `attention-output` and the `query` which comes as a skip connection from the `inputs`
     * The shape of the `attention-output` will be `(1,9,256)`; The shape of the `query` will be `(1,9,256)`.
@@ -119,13 +119,15 @@ The Transformer block is comprised of (sequentially),
     * This result is sent to the `Feed Forward Neural Netword`
 
   #### 3. Feed Forward Neural Network:
-  - TODO {Add Image of Add & Normalization}
+  ![Alt text](image-2.png)
+
   - `Feed Forward Neural Network` This block runs immediately after performing `Add & Normalization` layer
     * The inputs to the block will be a tensor of the shape `(1,9,256)`. `1` is the `Batch Size`; `9` is the `sequence_length`; `256` is the `embedding_dimension`
     * This feed forward neural network processes and results - `(1,9,256)`. `1` is the `Batch Size`; `9` is the `sequence_length`; `256` is the `embedding_dimension`
 
   #### 4. Add & Normalization Layer:
-  - TODO {Add Image of Add & Normalization}
+  ![Alt text](image-2.png)
+
   - `Add & Normalization` This block runs immediately after the `Feed Forwad Neural Network`
     * The inputs to the block will be calculated by adding `3. Feed Forward Neural Network` output and the `2. Add & Normalization Layer`'s which comes as a skip connection.
     * The shape of the `3. Feed Forward Neural Network` output will be `(1,9,256)`; The shape of the `2. Add & Normalization Layer`'s will be `(1,9,256)`
@@ -135,6 +137,6 @@ The Transformer block is comprised of (sequentially),
 
 ## Decoder:
 
-TODO - {Add image of the Decoder}
+![Alt text](image-3.png)
 
 ### Preparing the Input for Decoder:

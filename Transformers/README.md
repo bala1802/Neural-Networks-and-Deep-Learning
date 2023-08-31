@@ -160,3 +160,27 @@ The Transformer block is comprised of (sequentially),
     This is done to, let the decoder know that, you've 7 tokens to be predicted (except the first `token`), parallely. For example, the for the first row - the decoder should predict the second word for the given first word.
 
 - `src_mask` - Refer "Preparing the Input for Encoder"
+- `enc_src` - This is the output got from the `Encoder` block. This is `key`, and `value`.
+
+### Decoder Initialization:
+
+- The `embed_size` is `256`
+- Initialize the `word_embedding` and The shape of the `word_embedding` is `(trg_vocab_size, embed_size)` -> `(10, 256)`
+- Initialize the `position_embedding` and The shape of the `position_embedding` is `(max_length, embed_size)` -> `(max_length of the target sentences, 256)`
+- Initialize `7 Decoder Blocks`
+- Initialize a `Fully Connected` layer with the shape - `(embed_size, trg_vocab_size)`
+- Initialize a `Dropout layer`
+
+### Decoder - Prepare the data in the `forward` block to call the `Decoder Block`
+
+- `x` is the target tensor. 
+- `N = 1` is the `batch size`; `seq_length = 7` is the length of the `target`
+- The `target positions` are calculated as `tensor([[0, 1, 2, 3, 4, 5, 6]])`
+- The `word_embdding` and `positional_embedding` are added and the result is store in `x`. `x` will be the `target` input sent to the `Decoder Blocks`
+
+### Decoder Block Initialization:
+
+Total, `6` Decoder Blocks are created. This is configured as a `num_layers` while initializing the `Decoders`
+
+- 
+

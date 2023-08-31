@@ -182,5 +182,18 @@ The Transformer block is comprised of (sequentially),
 
 Total, `6` Decoder Blocks are created. This is configured as a `num_layers` while initializing the `Decoders`
 
-- 
+LOOP: This loop runs for specified number of `num_layers`
+  - Initialize the `self_attention` layer, with the shape `(embed_size, heads)` = `(256, 8)`
+  - Initialize `Layer Normalization` layer with the `embed_size=256`
+  - Initialize `Transformer Block`
 
+  - ### Decode Block - mechanism:
+    * The `attenetion` is calculated for the `x` (target data) - `torch.Size([1, 7, 256])`
+    * `attention` is retrieved from the `attention-block` by sending the `values, keys, query` as `x`. `attention` shape is `torch.Size([1, 7, 256])`
+    * Once after the `attention` is retrieved, add and normalized it by `attention` + `x`. This result is stored into the `query` object. The `query` shape is `torch.Size([1, 7, 256])`
+    * The `value` (`enc_src`); `key` (`enc_src`); `query`; `src_mask` are passed into the `Transformer Block`
+      - The `attention` is calculated
+      - Add & Normalize the `attention`+`query`. Store the result to `x`
+      - Send the `x` to the Feed Forward Neural Network, and store the result in `forward`
+      - Add & Normalize the `forward+x` and store the result in `out`
+      - The resulting `x` is sent to the `feed forward` neural network and results in `out`. This `out` is the Output from the `Decoder`
